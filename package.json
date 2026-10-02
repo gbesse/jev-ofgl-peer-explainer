@@ -1,0 +1,53 @@
+{
+  "name": "@gbesse/jev-ofgl-peer-explainer",
+  "version": "0.1.0",
+  "description": "Explique les écarts financiers d’une collectivité face à un groupe comparable calculé de façon déterministe.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "exports": {
+    ".": {
+      "types": "./src/index.d.mts",
+      "import": "./src/index.mjs"
+    },
+    "./jev": {
+      "types": "./src/jev.d.mts",
+      "import": "./src/jev.mjs"
+    }
+  },
+  "bin": {
+    "jev-ofgl-peer-explainer": "./bin/jev-ofgl-peer-explainer.mjs"
+  },
+  "scripts": {
+    "check": "node scripts/check.mjs",
+    "typecheck": "tsc --noEmit --strict --target ES2022 --module NodeNext docs/public-api-types.mts",
+    "test": "node --test",
+    "demo": "node examples/demo.mjs && node examples/cas-limite.mjs && node examples/revue-humaine.mjs",
+    "demo:principal": "node examples/demo.mjs",
+    "demo:limite": "node examples/cas-limite.mjs",
+    "demo:revue": "node examples/revue-humaine.mjs",
+    "demo:parcours": "node examples/parcours-comparatif.mjs"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gbesse/jev-ofgl-peer-explainer.git"
+  },
+  "keywords": [
+    "jev",
+    "typesafe-ai",
+    "france",
+    "open-data"
+  ],
+  "files": [
+    "src",
+    "bin",
+    "docs",
+    "examples",
+    "scripts"
+  ]
+}
