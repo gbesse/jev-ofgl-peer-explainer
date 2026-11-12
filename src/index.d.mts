@@ -7,3 +7,5 @@ export const DECISIONS: Readonly<Record<Decision, string>>;
 export function localFinanceCase(input: unknown): SourceRecord;
 export function assessLocalFinanceNarrative(input: unknown, provider: JevProvider): Promise<DecisionResult>;
 export function runCli(argv: string[], io?: { log(value: string): void }): Promise<void>;
+
+export function peerRatioLedger(peers:any[],options:{numerator:string;denominator:string;unit:string}):{rows:any[];eligiblePeers:number;pooledRatio:number|null;meanPeerRatio:number|null;unit:string;causalityProven:boolean};
