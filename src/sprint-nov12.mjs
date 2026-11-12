@@ -1,0 +1,6 @@
+export function peerRatioLedger(peers,{numerator,denominator,unit}={}){
+ const fail=()=>{throw new TypeError('Dénominateurs invalides / Invalid denominators / Denominadores inválidos');};
+ if(!Array.isArray(peers)||peers.length>10000||typeof numerator!=='string'||!numerator||typeof denominator!=='string'||!denominator||typeof unit!=='string'||!unit)fail();const ids=new Set(),rows=[];
+ for(const p of peers){if(typeof p.id!=='string'||!p.id||ids.has(p.id)||p.unit!==unit)fail();ids.add(p.id);const n=p[numerator],d=p[denominator];if(n!==null&&n!==undefined&&!Number.isFinite(n)||d!==null&&d!==undefined&&!Number.isFinite(d))fail();rows.push({id:p.id,numerator:n??null,denominator:d??null,ratio:Number.isFinite(n)&&Number.isFinite(d)&&d>0?n/d:null,reason:!Number.isFinite(n)||!Number.isFinite(d)?'missing_value':d<=0?'nonpositive_denominator':null});}
+ const eligible=rows.filter(r=>r.ratio!==null),sumN=eligible.reduce((s,r)=>s+r.numerator,0),sumD=eligible.reduce((s,r)=>s+r.denominator,0);if(!Number.isFinite(sumN)||!Number.isFinite(sumD))fail();return {rows,eligiblePeers:eligible.length,pooledRatio:eligible.length?sumN/sumD:null,meanPeerRatio:eligible.length?eligible.reduce((s,r)=>s+r.ratio,0)/eligible.length:null,unit,causalityProven:false};
+}
