@@ -114,3 +114,12 @@ FR : Rendre visibles dénominateurs absents et différence entre ratio moyen et 
 EN: Expose missing denominators and mean-versus-pooled OFGL ratios.
 
 ES: Exponer denominadores ausentes y diferencia entre ratios medios y agregados OFGL.
+
+
+## 2026-11-12 — FR / EN / ES
+
+FR : Refuser explicitement les débordements numériques des ratios individuels et agrégés.
+
+EN: Explicitly reject numeric overflow in individual and aggregated ratios.
+
+ES: Rechazar explícitamente desbordamientos numéricos en ratios individuales y agregados.
